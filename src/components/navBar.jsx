@@ -1,19 +1,27 @@
-import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
-const NavBar = (props) => {
-	//({totalCount})
-	return (
-		<nav className="navbar bg-light">
-			<div className="container-fluid">
-				<a className="navbar-brand" href="#">
-					Navbar
-				</a>
-				<span className="badge  badge-pill badge-secondary">
-					{props.totalCount} {/*totalCount*/}
-				</span>
-			</div>
-		</nav>
-	);
-};
+function NavBar() {
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <div className="container-fluid">
+          <a className="navbar-brand" href="#">
+            Navbar
+          </a>
+          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div className="navbar-nav">
+              <Link className="nav-link active" to="/">
+                Home
+              </Link>
+              <Link className="nav-link" to="/test">
+                Test
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
+}
 
 export default NavBar;

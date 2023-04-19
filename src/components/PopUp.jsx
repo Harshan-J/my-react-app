@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 
-function PopUp() {
+function PopUp(props) {
 	return (
 		<React.Fragment>
 			<p>Are you sure to Delete</p>
-			<button className="btn-secondary">Cancel</button>
-			<button className="btn-secondary">Delete</button>
+			<button className="btn-secondary" onClick={props.onCancel}>Cancel</button>
+			<button className="btn-secondary" onClick={props.onDelete}>Delete</button>
 		</React.Fragment>
 	);
 }

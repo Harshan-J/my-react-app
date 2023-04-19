@@ -4,8 +4,10 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "bootstrap/dist/css/bootstrap.css";
-import MyComponent from "./components/myComponent";
+import MyComponent from "./components/MyComponent";
 import axios, { Axios } from "axios";
+import { BrowserRouter } from "react-router-dom";
+import RouterPage from "./RouterPage";
 
 axios.interceptors.request.use((request) => {
 	request.headers.Authorization = "my token";
@@ -17,7 +19,9 @@ axios.interceptors.response.use((response) => {
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
 	<React.StrictMode>
-		<App />
+		<BrowserRouter>		
+			<RouterPage/>
+		</BrowserRouter>
 	</React.StrictMode>
 );
 

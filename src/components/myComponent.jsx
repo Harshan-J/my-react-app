@@ -48,7 +48,7 @@ class MyComponent extends Component {
 					DeleteTest
 				</button>
 				<BackDrop showBackDrop={this.state.isDeleteClicked}>
-					<PopUp />
+					<PopUp onDelete={() => this.deleteHandler(item.id)} onCancel={this.cancelHandler}/>
 				</BackDrop>
 			</React.Fragment>
 		);
@@ -64,9 +64,24 @@ class MyComponent extends Component {
 	// 	this.setState({ count: this.state.count });
 	// };
 
+	cancelHandler = () => {
+		this.hidePopUp();
+	}
+
+	deleteHandler = (id) =>
+	{
+		this.hidePopUp();
+		this.props.onDelete(id)
+	}
+
+	hidePopUp = () => {
+		this.setState({ isDeleteClicked: false });
+	};
+
 	showPopUp = () => {
 		this.setState({ isDeleteClicked: true });
 	};
+
 	getUIList() {
 		if (this.state.myList.length === 0) return <p>No elements in the list.</p>;
 		return (

@@ -16,6 +16,9 @@ function NavBar() {
               <Link className="nav-link" to="/test">
                 Test
               </Link>
+              <Link className="nav-link" to="/curdtestform">
+                CurdTestForm
+              </Link>
             </div>
           </div>
         </div>

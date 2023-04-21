@@ -11,6 +11,7 @@ class Parent extends Component {
         >
           Reset
         </button>
+
         {this.props.items.map((item) => (
           <MyComponent
             key={item.id}

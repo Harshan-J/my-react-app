@@ -1,20 +1,44 @@
-import React, { Component } from "react";
+import React, { Component, Suspense, lazy } from "react";
 import { Route, Switch, Routes } from "react-router-dom";
-import TestPage from "./pages/TestPage";
-import App from "./App";
 import NavBar from "./components/NavBar";
-import CurdTestForm from "./components/Forms/CurdTestForm";
+const TestPage = lazy(() => import("./pages/TestPage"));
+const App = lazy(() => import("./App"));
+const CurdTestForm = lazy(() => import("./components/Forms/CurdTestForm"));
 
 function RouterPage() {
   return (
     <div>
       <NavBar />
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/test" element={<TestPage />} />
-        <Route path="/curdtestform" element={<CurdTestForm />} />
+        <Route path="/" element={getAppComponent()} />
+        <Route path="/test" element={getTestPageComponent()} />
+        <Route path="/curdtestform" element={getCurdTestFormComponent()} />
       </Routes>
     </div>
+  );
+}
+
+function getAppComponent() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <App />
+    </Suspense>
+  );
+}
+
+function getTestPageComponent() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <TestPage />
+    </Suspense>
+  );
+}
+
+function getCurdTestFormComponent() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <CurdTestForm />
+    </Suspense>
   );
 }
 
